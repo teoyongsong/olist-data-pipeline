@@ -26,6 +26,12 @@ order_revenue as (
     group by 1, 2
 ),
 
+last_order as (
+    select
+        max(o.order_ts::date) as max_order_date
+    from orders o
+),
+
 agg as (
     select
         c.customer_id,
@@ -55,8 +61,9 @@ select
     round(total_revenue::numeric, 2) as customer_lifetime_value,
     case
         when first_order_date is null then 'No orders'
-        when first_order_date >= current_date - interval '3 month' then 'New'
-        when first_order_date >= current_date - interval '12 month' then 'Established'
+        when first_order_date >= max_order_date - interval '3 month' then 'New'
+        when first_order_date >= max_order_date - interval '12 month' then 'Established'
         else 'Loyal'
     end as tenure_segment
 from agg
+cross join last_order
