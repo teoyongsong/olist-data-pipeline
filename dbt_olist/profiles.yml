@@ -1,0 +1,13 @@
+# Use environment variables or override in ~/.dbt/profiles.yml
+olist_dw:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('POSTGRES_HOST', 'localhost') }}"
+      port: "{{ env_var('POSTGRES_PORT', '5432') | as_number }}"
+      user: "{{ env_var('POSTGRES_USER', 'postgres') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD', '') }}"
+      dbname: "{{ env_var('POSTGRES_DB', 'olist_dw') }}"
+      schema: dw
+      threads: 4

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olist E-Commerce Data Pipeline – From Raw Data to Business Insights</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/theme/white.css" />
+  <style>
+    .reveal h1, .reveal h2 { text-transform: none; }
+    .reveal ul { margin: 0.5em 0; }
+    .kpi { font-size: 0.85em; color: #333; }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Slide 1 – Title -->
+      <section>
+        <h1>Olist E-Commerce Data Pipeline</h1>
+        <p>From Raw Data to Business Insights</p>
+        <p class="kpi">Data Engineering Project</p>
+      </section>
+
+      <!-- Slide 2 – Executive Summary -->
+      <section>
+        <h2>Executive Summary</h2>
+        <p><strong>Problem:</strong> Reliable, timely analytics on e-commerce sales, customers, and operations.</p>
+        <p><strong>Solution:</strong> End-to-end pipeline: ingest Olist data → PostgreSQL → star schema → quality checks → analysis.</p>
+        <ul>
+          <li>Single source of truth for revenue, orders, and customer value</li>
+          <li>Trusted metrics: monthly trends, top categories, segments, delivery performance</li>
+          <li>Foundation for BI and data science</li>
+        </ul>
+      </section>
+
+      <!-- Slide 3 – Business Value -->
+      <section>
+        <h2>Business Value</h2>
+        <ul>
+          <li><strong>Revenue:</strong> Top categories and high-CLV segments for targeted campaigns</li>
+          <li><strong>Operations:</strong> Late-delivery metrics to improve logistics and SLAs</li>
+          <li><strong>Strategy:</strong> Reusable pipeline for more data sources and markets</li>
+        </ul>
+        <p class="kpi">Data → Insights → Decisions</p>
+      </section>
+
+      <!-- Slide 4 – Architecture -->
+      <section>
+        <h2>Architecture</h2>
+        <p>Source CSVs → Python ingest → PostgreSQL (<code>raw_olist</code>) → dbt (staging → star schema <code>dw</code>) → Quality (dbt + script) → Analysis (Python / BI).</p>
+        <p class="kpi">Single pipeline from raw data to analysis-ready star schema.</p>
+      </section>
+
+      <!-- Slide 5 – Star Schema -->
+      <section>
+        <h2>Star Schema</h2>
+        <ul>
+          <li><strong>Fact:</strong> Order items (revenue, units, late delivery, first order)</li>
+          <li><strong>Dimensions:</strong> Customer, Product, Seller, Date</li>
+          <li><strong>Why:</strong> Fast, intuitive queries; easy to extend</li>
+        </ul>
+      </section>
+
+      <!-- Slide 6 – Key Insights (from notebook) -->
+      <section>
+        <h2>Key Insights</h2>
+        <ul>
+          <li><strong>Monthly revenue:</strong> Strong growth from 2016 into 2017 (e.g. ~R$585k in peak months). Use the notebook’s monthly revenue chart for the slide.</li>
+          <li><strong>Top categories:</strong> beleza_saude, relogios_presentes, cama_mesa_banho, esporte_lazer, informatica_acessorios.</li>
+          <li><strong>Segmentation:</strong> Loyal segment dominates (99k+ customers, ~R$15.8M revenue, ~R$159 avg per customer).</li>
+          <li><strong>Late delivery:</strong> 6.6% of items late; opportunity to improve SLAs.</li>
+        </ul>
+        <p class="kpi">These metrics are reproducible and validated by the pipeline.</p>
+      </section>
+
+      <!-- Slide 7 – Data Quality & Trust -->
+      <section>
+        <h2>Data Quality & Trust</h2>
+        <ul>
+          <li><strong>What we do:</strong> Automated checks after each run (dbt tests + custom checks on raw data).</li>
+          <li><strong>What we catch:</strong> Missing keys, invalid numbers, broken references.</li>
+          <li><strong>Message:</strong> Quality gates ensure we can trust the numbers we present.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 8 – Risks and Mitigations -->
+      <section>
+        <h2>Risks and Mitigations</h2>
+        <ul>
+          <li><strong>Data quality:</strong> Automated tests and alerts.</li>
+          <li><strong>Scaling:</strong> Same design can move to cloud warehouse (e.g. BigQuery) if needed.</li>
+          <li><strong>Operational:</strong> Optional orchestration (e.g. scheduled runs) for regular refreshes.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 9 – Next Steps -->
+      <section>
+        <h2>Next Steps / Recommendations</h2>
+        <ul>
+          <li><strong>Short term:</strong> Use current metrics for monthly business reviews; add one or two dashboards.</li>
+          <li><strong>Medium term:</strong> Schedule pipeline (e.g. weekly); add more dimensions (e.g. region) if data allows.</li>
+          <li><strong>Long term:</strong> Extend to other sources (e.g. marketing, returns) using the same pattern.</li>
+        </ul>
+      </section>
+
+      <!-- Slide 10 – Q&A -->
+      <section>
+        <h2>Questions & Discussion</h2>
+        <p class="kpi">Balance technical depth with business language.</p>
+      </section>
+
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.6.1/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      plugins: [ RevealNotes ]
+    });
+  </script>
+</body>
+</html>

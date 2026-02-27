@@ -1,0 +1,36 @@
+# Environment
+.venv/
+venv/
+env/
+.env
+*.pyc
+__pycache__/
+.python-version
+
+# Data (keep structure, ignore large files)
+data/olist/*.csv
+!data/olist/.gitkeep
+
+# dbt
+dbt_olist/target/
+dbt_olist/dbt_packages/
+dbt_olist/logs/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Great Expectations (optional)
+great_expectations/expectations/
+great_expectations/checkpoints/
+great_expectations/uncommitted/
+
+# OS
+.DS_Store
+Thumbs.db
