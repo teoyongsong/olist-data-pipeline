@@ -14,16 +14,16 @@
 </head>
 <body style="background-color: lightblue;">
   <div class="reveal">
-    <div class="slides", tyle="margin-bottom:100px;">
+    <div class="slides">
 
-      <!-- Slide 1 – Title -->
+      <!-- Slide 0 – Title -->
       <section>
         <h1>Olist E-Commerce Data Pipeline</h1>
         <p>From Raw Data to Business Insights</p>
         <p class="kpi">Data Engineering Project</p>
       </section>
 
-      <!-- Slide 2 – Executive Summary -->
+      <!-- Slide 1 – Executive Summary -->
       <section>
         <h2>Executive Summary</h2>
         <p><strong>Problem:</strong> Reliable, timely analytics on e-commerce sales, customers, and operations.</p>
@@ -35,7 +35,7 @@
         </ul>
       </section>
 
-      <!-- Slide 3 – Business Value -->
+      <!-- Slide 2 – Business Value -->
       <section>
         <h2>Business Value</h2>
         <ul>
@@ -46,14 +46,14 @@
         <p class="kpi">Data → Insights → Decisions</p>
       </section>
 
-      <!-- Slide 4 – Architecture -->
+      <!-- Slide 3 – Architecture -->
       <section>
         <h2>Architecture</h2>
         <p>Source CSVs → Python ingest → PostgreSQL (<code>raw_olist</code>) → dbt (staging <code>dw_stg_olist</code> → star schema <code>dw_dw</code>) → Quality (dbt + script) → Analysis (Python / BI).</p>
         <p class="kpi">Single pipeline from raw data to analysis-ready star schema.</p>
       </section>
 
-      <!-- Slide 5 – Star Schema -->
+      <!-- Slide 4 – Star Schema -->
       <section>
         <h2>Star Schema</h2>
         <ul>
@@ -63,35 +63,35 @@
         </ul>
       </section>
 
-      <!-- Slide 6.1 – Monthly revenue -->
+      <!-- Slide 5 – Monthly revenue -->
       <section>
         <h2>Key Insights: Monthly Revenue</h2>
         <p><strong>Strong growth</strong> from 2016 into 2017 (e.g. ~R$585k in peak months).</p>
         <img src="mthly_revenue.png" alt="Monthly revenue chart" style="max-width:100%; height:auto;">
       </section>
 
-      <!-- Slide 6.2 – Top categories -->
+      <!-- Slide 6 – Top categories -->
       <section>
         <h2>Key Insights: Top Categories</h2>
         <p><strong>Top by revenue:</strong> beleza_saude, relogios_presentes, cama_mesa_banho, esporte_lazer, informatica_acessorios.</p>
-        <img src="top_pdt.png" alt="Top product categories chart" style="max-width:100%; height:auto;">
+        <img src="top_pdt.png" alt="Top product categories chart" style="max-width:100%; height: 350px;">
       </section>
 
-      <!-- Slide 6.3 – Revenue by segment -->
+      <!-- Slide 7 – Revenue by segment -->
       <section>
         <h2>Key Insights: Revenue by Segment</h2>
         <p><strong>Tenure segments</strong> (New, Established, Loyal) from <code>dim_customer</code>; total revenue and customer count per segment. Use notebook chart for current breakdown.</p>
-        <img src="revenue_segment.png" alt="Total revenue by tenure segment" style="max-width:100%; height:auto;">
+        <img src="revenue_segment.png" alt="Total revenue by tenure segment" style="max-width:100%; height:300px;">
       </section>
 
-      <!-- Slide 6.4 – Late delivery -->
+      <!-- Slide 8 – Late delivery -->
       <section>
         <h2>Key Insights: Late Delivery</h2>
         <p><strong>6.6%</strong> of items late (7,265 vs 102,931 on-time); opportunity to improve SLAs.</p>
         <p class="kpi">These metrics are reproducible and validated by the pipeline.</p>
       </section>
 
-      <!-- Slide 7 – Data Quality & Trust -->
+      <!-- Slide 9 – Data Quality & Trust -->
       <section>
         <h2>Data Quality & Trust</h2>
         <ul>
@@ -101,7 +101,7 @@
         </ul>
       </section>
 
-      <!-- Slide 8 – Risks and Mitigations -->
+      <!-- Slide 10 – Risks and Mitigations -->
       <section>
         <h2>Risks and Mitigations</h2>
         <ul>
@@ -111,7 +111,7 @@
         </ul>
       </section>
 
-      <!-- Slide 9 – Next Steps -->
+      <!-- Slide 11 – Next Steps -->
       <section>
         <h2>Next Steps / Recommendations</h2>
         <ul>
@@ -121,7 +121,7 @@
         </ul>
       </section>
 
-      <!-- Slide 10 – Q&A -->
+      <!-- Slide 12 – Q&A -->
       <section>
         <h2>Questions & Discussion</h2>
         <!-- <p class="kpi">Balance technical depth with business language.</p> -->
