@@ -49,7 +49,7 @@
       <!-- Slide 4 – Architecture -->
       <section>
         <h2>Architecture</h2>
-        <p>Source CSVs → Python ingest → PostgreSQL (<code>raw_olist</code>) → dbt (staging → star schema <code>dw</code>) → Quality (dbt + script) → Analysis (Python / BI).</p>
+        <p>Source CSVs → Python ingest → PostgreSQL (<code>raw_olist</code>) → dbt (staging <code>dw_stg_olist</code> → star schema <code>dw_dw</code>) → Quality (dbt + script) → Analysis (Python / BI).</p>
         <p class="kpi">Single pipeline from raw data to analysis-ready star schema.</p>
       </section>
 
@@ -63,15 +63,31 @@
         </ul>
       </section>
 
-      <!-- Slide 6 – Key Insights (from notebook) -->
+      <!-- Slide 6.1 – Monthly revenue -->
       <section>
-        <h2>Key Insights</h2>
-        <ul>
-          <li><strong>Monthly revenue:</strong> Strong growth from 2016 into 2017 (e.g. ~R$585k in peak months). Use the notebook’s monthly revenue chart for the slide.</li>
-          <li><strong>Top categories:</strong> beleza_saude, relogios_presentes, cama_mesa_banho, esporte_lazer, informatica_acessorios.</li>
-          <li><strong>Segmentation:</strong> Loyal segment dominates (99k+ customers, ~R$15.8M revenue, ~R$159 avg per customer).</li>
-          <li><strong>Late delivery:</strong> 6.6% of items late; opportunity to improve SLAs.</li>
-        </ul>
+        <h2>Key Insights: Monthly Revenue</h2>
+        <p><strong>Strong growth</strong> from 2016 into 2017 (e.g. ~R$585k in peak months).</p>
+        <img src="mthly_revenue.png" alt="Monthly revenue chart" style="max-width:100%; height:auto;">
+      </section>
+
+      <!-- Slide 6.2 – Top categories -->
+      <section>
+        <h2>Key Insights: Top Categories</h2>
+        <p><strong>Top by revenue:</strong> beleza_saude, relogios_presentes, cama_mesa_banho, esporte_lazer, informatica_acessorios.</p>
+        <img src="top_pdt.png" alt="Top product categories chart" style="max-width:100%; height:auto;">
+      </section>
+
+      <!-- Slide 6.3 – Revenue by segment -->
+      <section>
+        <h2>Key Insights: Revenue by Segment</h2>
+        <p><strong>Tenure segments</strong> (New, Established, Loyal) from <code>dim_customer</code>; total revenue and customer count per segment. Use notebook chart for current breakdown.</p>
+        <img src="revenue_segment.png" alt="Total revenue by tenure segment" style="max-width:100%; height:auto;">
+      </section>
+
+      <!-- Slide 6.4 – Late delivery -->
+      <section>
+        <h2>Key Insights: Late Delivery</h2>
+        <p><strong>6.6%</strong> of items late (7,265 vs 102,931 on-time); opportunity to improve SLAs.</p>
         <p class="kpi">These metrics are reproducible and validated by the pipeline.</p>
       </section>
 
