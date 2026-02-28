@@ -1,0 +1,41 @@
+# Scheduled pipeline run: ELT + data quality.
+# Trigger: nightly (schedule) or manually (workflow_dispatch).
+# Add repo secrets: POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB, DATA_DIR
+
+name: Run pipeline
+
+on:
+  schedule:
+    # Run at 2 AM UTC daily (adjust cron as needed)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install dbt-postgres
+
+      - name: Configure env for dbt/ingestion
+        run: |
+          echo "POSTGRES_HOST=${{ secrets.POSTGRES_HOST }}" >> $GITHUB_ENV
+          echo "POSTGRES_PORT=${{ secrets.POSTGRES_PORT }}" >> $GITHUB_ENV
+          echo "POSTGRES_USER=${{ secrets.POSTGRES_USER }}" >> $GITHUB_ENV
+          echo "POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}" >> $GITHUB_ENV
+          echo "POSTGRES_DB=${{ secrets.POSTGRES_DB }}" >> $GITHUB_ENV
+          echo "DATA_DIR=${{ secrets.DATA_DIR }}" >> $GITHUB_ENV
+
+      - name: Run pipeline (ingest → dbt run → dbt test → data quality)
+        run: python orchestration/flow.py

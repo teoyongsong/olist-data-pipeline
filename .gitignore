@@ -11,6 +11,9 @@ __pycache__/
 data/olist/*.csv
 !data/olist/.gitkeep
 
+# Orchestration logs
+logs/
+
 # dbt
 dbt_olist/target/
 dbt_olist/dbt_packages/
